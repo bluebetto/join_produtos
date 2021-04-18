@@ -1,0 +1,24 @@
+zf:
+  build: .
+  dockerfile: Dockerfile
+  ports:
+   - "8080:80"
+  volumes:
+   - .:/var/www
+  links:
+   - join-mysql
+
+join-mysql:
+  image: mysql:5.7
+  container_name: join-mysql
+  working_dir: /application
+  volumes:
+    - ../mysql:/var/lib/mysql
+    - ./mysql/my.cnf:/etc/mysql/my.cnf
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=join
+    - MYSQL_USER=join
+    - MYSQL_PASSWORD=1234
+  ports:
+    - "8186:3306"

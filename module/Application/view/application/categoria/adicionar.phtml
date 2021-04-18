@@ -1,0 +1,18 @@
+<div>
+    <h1>Adicionar categoria</h1>
+    <div>
+        <a href="/categoria">Voltar</a>
+    </div>
+    <div>
+        <?php
+        $form->setAttribute('action', '/categoria/adicionar');
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formHidden($form->get('id_categoria_planejamento'));
+        
+        echo $this->formRow($form->get('nome_categoria'));
+        echo $this->formSubmit($form->get('salvar'));
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>

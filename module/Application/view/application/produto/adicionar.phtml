@@ -1,0 +1,19 @@
+<div>
+    <h1>Adicionar produto</h1>
+    <div>
+        <a href="/produto">Voltar</a>
+    </div>
+    <div>
+        <?php
+        $form->setAttribute('action', '/produto/adicionar');
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formHidden($form->get('id_produto'));
+        echo $this->formRow($form->get('nome_produto'));
+        echo $this->formRow($form->get('id_categoria_produto'));
+        echo $this->formRow($form->get('valor_produto'));
+        echo $this->formSubmit($form->get('salvar'));
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>

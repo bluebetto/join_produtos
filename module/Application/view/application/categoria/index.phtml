@@ -1,0 +1,33 @@
+<h1>Categorias</h1>
+<div>
+    <a href="/categoria/adicionar" class="btn btn-success">Adicionar</a>
+</div>
+<div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <td><b>id</b></td>
+                <td><b>Nome</b></td>
+                <td><b></b></td>
+            </tr>
+        </thead>
+        <tbody>
+        <?php if(count($categorias)): ?>
+            <?php foreach($categorias as $categoria):?>
+                <tr>
+                    <td><?= $categoria->id_categoria_planejamento ?></td>
+                    <td><?= $this->escapeHtml($categoria->nome_categoria) ?></td>
+                    <td>
+                        <a href="categoria/editar/<?= $categoria->id_categoria_planejamento ?>" class="btn btn-info">Editar</a>
+                        <a href="javascript:if(confirm('Deseja mesmo remover está categoria?')) window.location='categoria/remover/<?= $categoria->id_categoria_planejamento ?>';" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="3"><h3>Nenhuma categoria registrada</h3></td>
+            </tr>
+        <?php endif; ?>
+        </tbody>
+    </table>
+</div>

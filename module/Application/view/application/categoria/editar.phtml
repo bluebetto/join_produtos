@@ -1,0 +1,24 @@
+<div>
+    <h1>Editar categoria</h1>
+    <div>
+        <a href="/categoria">Voltar</a>
+    </div>
+    <?php if(count($erros)):?>
+    <div>
+        <?php foreach ($erros as $erro): ?>
+            <h4><?= $erro ?></h4>
+        <?php endforeach; ?>
+    </div>
+    <?php endif;?>
+    <div>
+        <?php
+        $form->setAttribute('action', '/categoria/editar/'.$id);
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formRow($form->get('nome_categoria'));
+        echo $this->formHidden($form->get('id_categoria_planejamento'));
+        echo $this->formSubmit($form->get('salvar'));
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>
